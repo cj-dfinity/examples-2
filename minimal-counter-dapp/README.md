@@ -24,7 +24,37 @@ This example project can be cloned, installed and deployed locally, for learning
 ### Prerequisites
 The example project requeres the following installed:
 
+- GitHub
 - Node.js
 - DFX 
 
-Node can be installed from various package managers. DFX can be installed following the instructions [here](https://smartcontracts.org/docs/quickstart/local-quickstart.html#download-and-install).
+GitHub and Node can be installed from various package managers. DFX can be installed following the instructions [here](https://smartcontracts.org/docs/quickstart/local-quickstart.html#download-and-install).
+
+### Install
+Install the example dapp project:
+
+```bash
+$ git clone https://github.com/dfinity/examples
+$ cd motoko/minimal-dapp
+$ npm install
+```
+
+
+## Documentation
+Documentation can exist in the README file, but it can also be located elsewhere if it is extensive. 
+
+#### someFunction
+```javascript
+const token:Token = someFunction(name: string);
+```
+- **name:string** - a human readable name for the token
+- returns **token:Token**
+
+#### anotherFunction
+```javascript
+anotherFunction(token: Token, value: any);
+```
+- **token:Token** - a token created via someFunction
+- **value:any** - a configuration value
+- returns **undefined**
+
