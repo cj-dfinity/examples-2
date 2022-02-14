@@ -99,8 +99,6 @@ The localhost version of the `canister_ids.json` file can be found in `.dfx/loca
 
 **http://<candid_canister_id>.localhost:8000/?id=<backend_canister_id>**
 
-![Candid UI](images/candid_ui.png)
-
 
 ### Frontend
 The default project installed with `dfx new project_name` has an `index.html` file with page HTML and an `index.js` file with an implementation of the backend functions. These two files are modified in this example project to support the counter functionality, and the backend functions.
