@@ -39,22 +39,13 @@ $ cd motoko/minimal-dapp
 $ npm install
 ```
 
+The project folder will then look like this:
+
+![Counter Frontend](images/project_files.png)
+
 
 ## Documentation
-Documentation can exist in the README file, but it can also be located elsewhere if it is extensive. 
+The three main parts of the example dapp is the backend, the Candid interface and the frontend. This example project is based on the default project, which is created when running the `dfx new project_name`, but most of the default project code is replaced to create the counter functionality in this project.
 
-#### someFunction
-```javascript
-const token:Token = someFunction(name: string);
-```
-- **name:string** - a human readable name for the token
-- returns **token:Token**
-
-#### anotherFunction
-```javascript
-anotherFunction(token: Token, value: any);
-```
-- **token:Token** - a token created via someFunction
-- **value:any** - a configuration value
-- returns **undefined**
-
+#### Motoko backend
+The backend functions are located in the `src/minimal_dapp/main.mo` Motoko file. 
