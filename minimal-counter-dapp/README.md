@@ -16,3 +16,15 @@ This example covers:
 - Test backend with Candid UI and command line using DFX, and test frontend in browser 
 
 
+
+
+## Installation
+This example project can be cloned, installed and deployed locally, for learning and testing purposes. The instructions are based on running the example on either macOS or Linux, but when using WSL2 on Windows, the instructions will be the same.
+
+### Prerequisites
+The example project requeres the following installed:
+
+- Node.js
+- DFX 
+
+Node can be installed from various package managers. DFX can be installed following the instructions [here](https://smartcontracts.org/docs/quickstart/local-quickstart.html#download-and-install).
