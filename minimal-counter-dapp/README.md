@@ -51,7 +51,7 @@ The three main parts of the example dapp is the backend, the Candid interface an
 The backend functions are located in the `src/minimal_dapp/main.mo` Motoko file. The backend stores the counter value, and has functions to get, increment and reset the counter value.
 
 
-`### Counter variable
+### Counter variable
 Three functions are created to make the counter work: count(), getCount() and reset(). The current counter value is stored as a number in the actor.
 
 
