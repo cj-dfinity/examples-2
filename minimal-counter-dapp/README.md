@@ -198,3 +198,21 @@ The localhost version of the `canister_ids.json` file can be found in `.dfx/loca
 
 
 
+## Deployment
+Deploy the example project locally by running these commands:
+
+The local network is started by running this command:
+
+```bash
+$ dfx start --background
+```
+
+When the local network is up and running, run this command to deploy the canisters:
+
+```bash
+$ dfx deploy
+```
+
+
+## License
+This project is licensed under the Apache 2.0 license, see LICENSE.md for details. See CONTRIBUTE.md for details about how to contribute to this project. 
