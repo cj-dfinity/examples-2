@@ -92,26 +92,57 @@ public func reset() : async Nat {
 };
 ```
 
+### Candid interface
+The Candid interface is automatically created, and it has a convienient UI, which provides an easy, user friendly way to test the backend. The UI is also automatically generated, and the canister ID can be found in the `canister_ids.json` file. 
+
+The localhost version of the `canister_ids.json` file can be found in `.dfx/local/canister_ids.json` and the URL is: 
+
+**http://<candid_canister_id>.localhost:8000/?id=<backend_canister_id>**
+
+![Candid UI](images/candid_ui.png)
 
 
+### Frontend
+The default project installed with `dfx new project_name` has an `index.html` file with page HTML and an `index.js` file with an implementation of the backend functions. These two files are modified in this example project to support the counter functionality, and the backend functions.
 
+#### HTML
+All HTML code is in the `src/minimal_dapp/_assets/index.html` file, and most of the HTML is carried over from the default project. The button is kept and so is the section showing the result, just simplified.
 
+```html
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>hack</title>
+        <base href="/">
 
-
-
-## Create New Project
-Duration: 0:03:00
-
-Run this command to create project:
-
-```bash
-$ dfx new minimal_dapp
+        <link type="text/css" rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <img src="logo.png" alt="DFINITY logo" />
+        <section>
+            <button id="clickMeBtn">Click Me!</button>
+        </section>
+        <section id="counter"></section>
+    </body>
+</html>
 ```
 
-DFX will create a new directory called *minimal_dapp*, and in this directory you will find all the files, both frontend, backend, configurations etc. for the default project. The default project can be deployed without any changes as it is.
+#### Javascript
+Two eventlisteners are added to the JavaScript file, `src/minimal_dapp/_assets/index.js`, the existing JavaScript file from the default project. One eventlistener is for detecting button clicks, and it's calling the `count()` function in the backend, and an eventlistener for page load is added to get the initial value of the counter with `getCount()`. The backend functions are imported through the Candid interface.
 
-![Default project](images/project_files.png)
+```javascript
+import { minimaldapp } from "../../declarations/minimal_dapp";
 
-The `src` directory will contain the default frontend and backend code.
+document.addEventListener('DOMContentLoaded', async function () {
+  const counter = await minimaldapp.getCount();
+  document.getElementById("counter").innerText = "Counter: " + counter;
+})
 
-The `dfx.json` file contains the canister configuration. It defines the canister(s), where the source code for the canister(s) is located, the type of canister(s) and which version of DFX the project was created with. 
+document.getElementById("clickMeBtn").addEventListener("click", async () => {
+  const counter = await minimaldapp.count();
+  document.getElementById("counter").innerText = "Counter: " + counter;
+});
+```
+
