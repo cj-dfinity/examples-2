@@ -199,8 +199,6 @@ The localhost version of the `canister_ids.json` file can be found in `.dfx/loca
 
 
 ## Deployment
-Deploy the example project locally by running these commands:
-
 The local network is started by running this command:
 
 ```bash
