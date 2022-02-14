@@ -1,7 +1,7 @@
 # Minimalistic Dapp
 The example dapp shows how to build a very basic dapp with both backend and fronted, using Motoko for the backend functionality and plain HTML and JavaScript for the frontend. The dapp is a simple counter, which will increment a counter by clicking a button in the frontend. 
 
-![Counter Frontend](/images/frontend.png)
+![Counter Frontend](images/frontend.png)
 
 ## Introduction
 The purpuse of this example dapp is to show how a simple counter dapp can be implemented, with both the frontend and the backend deployed on-chain, in canisters. 
