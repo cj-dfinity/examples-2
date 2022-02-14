@@ -47,11 +47,11 @@ The project folder will then look like this:
 ## Documentation
 The three main parts of the example dapp is the backend, the Candid interface and the frontend. This example project is based on the default project, which is created when running the `dfx new project_name`, but most of the default project code is replaced to create the counter functionality in this project.
 
-#### Motoko backend
+### Motoko backend
 The backend functions are located in the `src/minimal_dapp/main.mo` Motoko file. The backend stores the counter value, and has functions to get, increment and reset the counter value.
 
 
-### Counter variable
+#### Counter variable
 Three functions are created to make the counter work: count(), getCount() and reset(). The current counter value is stored as a number in the actor.
 
 
@@ -61,7 +61,7 @@ actor {
 }
 ```
 
-### count()
+#### count()
 The `count()` function increments the counter variable. This function is envoked when the user is clicking the button on the frontend, or when the function is called through the Candid interface.
 
 ```javascript
@@ -73,7 +73,7 @@ public func count() : async Nat {
 
 The function is returning the incremented counter variable.
 
-### getCount()
+#### getCount()
 The `getCount()` function returns the current counter value.
 
 ```javascript
@@ -82,7 +82,7 @@ public query func getCount() : async Nat {
 };
 ```
 
-### reset()
+#### reset()
 The `reset()` function resets the counter value to 0 and returns the value.
 
 ```javascript
@@ -91,3 +91,27 @@ public func reset() : async Nat {
     return counter;
 };
 ```
+
+
+
+
+
+
+
+
+## Create New Project
+Duration: 0:03:00
+
+Run this command to create project:
+
+```bash
+$ dfx new minimal_dapp
+```
+
+DFX will create a new directory called *minimal_dapp*, and in this directory you will find all the files, both frontend, backend, configurations etc. for the default project. The default project can be deployed without any changes as it is.
+
+![Default project](images/project_files.png)
+
+The `src` directory will contain the default frontend and backend code.
+
+The `dfx.json` file contains the canister configuration. It defines the canister(s), where the source code for the canister(s) is located, the type of canister(s) and which version of DFX the project was created with. 
