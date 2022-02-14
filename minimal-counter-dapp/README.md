@@ -144,8 +144,9 @@ document.getElementById("clickMeBtn").addEventListener("click", async () => {
 });
 ```
 
-## Testing
-The functionality of this example dapp can be tested both in the frontend and in the backend. Before the example dapp can be tested, it must be deployed (locally). The local network is started by running this command:
+
+## Deployment
+The local network is started by running this command:
 
 ```bash
 $ dfx start --background
@@ -156,6 +157,10 @@ When the local network is up and running, run this command to deploy the caniste
 ```bash
 $ dfx deploy
 ```
+
+
+## Testing
+The functionality of this example dapp can be tested both in the frontend and in the backend. Before the example dapp can be tested, it must be deployed (locally) like described in the above Deployment section. 
 
 ### Test the Frontend
 The URL for the frontend is depending on the canister ID, the local canister IDs can be found in `.dfx/local/canister_ids.json`. When deployed, the URL will look like this:
@@ -195,19 +200,6 @@ The localhost version of the `canister_ids.json` file can be found in `.dfx/loca
 ![Candid UI](images/candid_ui.png)
 
 
-
-## Deployment
-The local network is started by running this command:
-
-```bash
-$ dfx start --background
-```
-
-When the local network is up and running, run this command to deploy the canisters:
-
-```bash
-$ dfx deploy
-```
 
 
 ## License
