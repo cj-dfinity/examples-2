@@ -146,3 +146,55 @@ document.getElementById("clickMeBtn").addEventListener("click", async () => {
 });
 ```
 
+## Testing
+The functionality of this example dapp can be tested both in the frontend and in the backend. Before the example dapp can be tested, it must be deployed (locally). The local network is started by running this command:
+
+```bash
+$ dfx start --background
+```
+
+When the local network is up and running, run this command to deploy the canisters:
+
+```bash
+$ dfx deploy
+```
+
+### Test the Frontend
+The URL for the frontend is depending on the canister ID, the local canister IDs can be found in `.dfx/local/canister_ids.json`. When deployed, the URL will look like this:
+
+**https://<ui_canister_id>.localhost:8000**
+
+### Test the backend
+There are two ways of testing the backend. One way is by making command line requests using DFX, and the other way is to use the Candid UI.
+
+### DFX
+DFX has a subset of commands for canister operations, and one of them enables calling the public functions added to the `main.mo` file in the previous step. In the following examples the initial value is 0. `count` will increment value and return 1, `getCount` will return the current value and `reset` will set the value to 0.
+
+Command usage: `dfx canister call &#60project&#62  &#60function&#62`
+
+```bash
+$ dfx canister call minimal_dapp count
+(1 : Nat)
+```
+
+```bash
+$ dfx canister call minimal_dapp getCount
+(1 : Nat)
+```
+
+```bash
+$ dfx canister call minimal_dapp reset
+(0 : Nat)
+```
+
+### Candid UI
+The Candid UI provides an easy, user friendly interface for testing the backend. The UI is automatically generated, and the canister ID can be found in the `canister_ids.json` file. 
+
+The localhost version of the `canister_ids.json` file can be found in `.dfx/local/canister_ids.json` and the URL is: 
+
+**http://<candid_canister_id>.localhost:8000/?id=<backend_canister_id>**
+
+![Candid UI](images/candid_ui.png)
+
+
+
