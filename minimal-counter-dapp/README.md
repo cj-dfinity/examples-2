@@ -48,4 +48,46 @@ The project folder will then look like this:
 The three main parts of the example dapp is the backend, the Candid interface and the frontend. This example project is based on the default project, which is created when running the `dfx new project_name`, but most of the default project code is replaced to create the counter functionality in this project.
 
 #### Motoko backend
-The backend functions are located in the `src/minimal_dapp/main.mo` Motoko file. 
+The backend functions are located in the `src/minimal_dapp/main.mo` Motoko file. The backend stores the counter value, and has functions to get, increment and reset the counter value.
+
+
+`### Counter variable
+Three functions are created to make the counter work: count(), getCount() and reset(). The current counter value is stored as a number in the actor.
+
+
+```javascript
+actor {
+    var counter : Nat = 0;
+}
+```
+
+### count()
+The `count()` function increments the counter variable. This function is envoked when the user is clicking the button on the frontend, or when the function is called through the Candid interface.
+
+```javascript
+public func count() : async Nat {
+    counter += 1;
+    return counter;
+};
+```
+
+The function is returning the incremented counter variable.
+
+### getCount()
+The `getCount()` function returns the current counter value.
+
+```javascript
+public query func getCount() : async Nat {
+    return counter;
+};
+```
+
+### reset()
+The `reset()` function resets the counter value to 0 and returns the value.
+
+```javascript
+public func reset() : async Nat {
+    counter := 0;
+    return counter;
+};
+```
