@@ -167,7 +167,7 @@ The URL for the frontend is depending on the canister ID, the local canister IDs
 ### Test the backend
 There are two ways of testing the backend. One way is by making command line requests using DFX, and the other way is to use the Candid UI.
 
-### DFX
+#### DFX
 DFX has a subset of commands for canister operations, and one of them enables calling the public functions added to the `main.mo` file in the previous step. In the following examples the initial value is 0. `count` will increment value and return 1, `getCount` will return the current value and `reset` will set the value to 0.
 
 Command usage: `dfx canister call &#60project&#62  &#60function&#62`
@@ -187,7 +187,7 @@ $ dfx canister call minimal_dapp reset
 (0 : Nat)
 ```
 
-### Candid UI
+#### Candid UI
 The Candid UI provides an easy, user friendly interface for testing the backend. The UI is automatically generated, and the canister ID can be found in the `canister_ids.json` file. 
 
 The localhost version of the `canister_ids.json` file can be found in `.dfx/local/canister_ids.json` and the URL is: 
