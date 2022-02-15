@@ -4,16 +4,15 @@ The example dapp shows how to build a simple dapp in Motoko, which will have per
 ![Counter Frontend](README_images/candid_ui.png)
 
 ## Introduction
-The purpuse of this example dapp is to build a minimalistic dapp, based on the default dapp template, installed by DFX when creating a new project. The dapp is a simple website with a counter. Every time a button is pressed, a counter is incremented. 
+The purpuse of this example dapp is to build a simple counter dapp, where the counter value will persist even after the dapp has changed and been re-deployed. 
 
 This example covers:
 
-- Create new canister smart contract using the SDK (DFX)
-- Use the default project as a template as the starting point for the new project
+- Create new canister smart contract using Motoko
 - Add backend functions for a counter (count, get count and reset count)
-- Implement backend functions in the frontend
+- Implement preupgrade() and postupgrade() to ensure data persistence 
 - Deploy the canister smart contract locally
-- Test backend with Candid UI and command line using DFX, and test frontend in browser 
+- Test backend with Candid UI and command line using DFX 
 
 ## Installation
 This example project can be cloned, installed and deployed locally, for learning and testing purposes. The instructions are based on running the example on either macOS or Linux, but when using WSL2 on Windows, the instructions will be the same.
@@ -22,10 +21,9 @@ This example project can be cloned, installed and deployed locally, for learning
 The example project requeres the following installed:
 
 - GitHub
-- Node.js
 - DFX 
 
-GitHub and Node can be installed from various package managers. DFX can be installed following the instructions [here](https://smartcontracts.org/docs/quickstart/local-quickstart.html#download-and-install).
+GitHub can be installed from various package managers. DFX can be installed following the instructions [here](https://smartcontracts.org/docs/quickstart/local-quickstart.html#download-and-install).
 
 ### Install
 Install the example dapp project:
