@@ -1,7 +1,7 @@
 # Minimalistic Dapp
 The example dapp shows how to build a very basic dapp with both backend and fronted, using Motoko for the backend functionality and plain HTML and JavaScript for the frontend. The dapp is a simple counter, which will increment a counter by clicking a button in the frontend. 
 
-![Counter Frontend](images/frontend.png)
+![Counter Frontend](README_images/frontend.png)
 
 ## Introduction
 The purpuse of this example dapp is to build a minimalistic dapp, based on the default dapp template, installed by DFX when creating a new project. The dapp is a simple website with a counter. Every time a button is pressed, a counter is incremented. 
@@ -14,9 +14,6 @@ This example covers:
 - Implement backend functions in the frontend
 - Deploy the canister smart contract locally
 - Test backend with Candid UI and command line using DFX, and test frontend in browser 
-
-
-
 
 ## Installation
 This example project can be cloned, installed and deployed locally, for learning and testing purposes. The instructions are based on running the example on either macOS or Linux, but when using WSL2 on Windows, the instructions will be the same.
@@ -41,7 +38,7 @@ $ npm install
 
 The project folder will then look like this:
 
-![Counter Frontend](images/project_files.png)
+![Counter Frontend](README_images/project_files.png)
 
 
 ## Documentation
@@ -197,10 +194,7 @@ The localhost version of the `canister_ids.json` file can be found in `.dfx/loca
 
 **http://<candid_canister_id>.localhost:8000/?id=<backend_canister_id>**
 
-![Candid UI](images/candid_ui.png)
-
-
-
+![Candid UI](README_images/candid_ui.png)
 
 ## License
 This project is licensed under the Apache 2.0 license, see LICENSE.md for details. See CONTRIBUTE.md for details about how to contribute to this project. 
