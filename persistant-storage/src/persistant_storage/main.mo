@@ -1,7 +1,7 @@
 actor {
-    
-    stable var counter : Nat = 0;
-    //let cnt = 
+
+    stable var cnt : Nat = 0;
+    var counter : Nat = cnt;
 
     public func increment() : async Nat {
         counter += 1;
@@ -15,5 +15,13 @@ actor {
     public func reset() : async Nat {
         counter := 0;
         return counter;
+    };
+
+    system func preupgrade() {
+        cnt := counter;
+    };
+
+    system func postupgrade() {
+        cnt := 0;
     };
 };
