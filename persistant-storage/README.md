@@ -10,7 +10,6 @@ This example covers:
 
 - Create new canister smart contract using Motoko
 - Add backend functions for a counter (count, get count and reset count)
-- Implement preupgrade() and postupgrade() to ensure data persistence 
 - Deploy the canister smart contract locally
 - Test backend with Candid UI and command line using DFX 
 
@@ -30,29 +29,22 @@ Install the example dapp project:
 
 ```bash
 $ git clone https://github.com/dfinity/examples
-$ cd motoko/minimal-dapp
-$ npm install
+$ cd motoko/persistant storage
 ```
 
-The project folder will then look like this:
-
-![Counter Frontend](README_images/project_files.png)
-
-
 ## Documentation
-The three main parts of the example dapp is the backend, the Candid interface and the frontend. This example project is based on the default project, which is created when running the `dfx new project_name`, but most of the default project code is replaced to create the counter functionality in this project.
+The two main parts of the example dapp is the backend and the Candid interface. This example project does not have a frontend.
 
 ### Motoko backend
-The backend functions are located in the `src/minimal_dapp/main.mo` Motoko file. The backend stores the counter value, and has functions to get, increment and reset the counter value.
-
+The backend functions are located in the `src/persistant_storage/main.mo` Motoko file. The backend stores the counter value, and has functions to get, increment and reset the counter value. Furthermore the backend insures the counter value persists upgrades of the dapp.
 
 #### Counter variable
-Three functions are created to make the counter work: count(), getCount() and reset(). The current counter value is stored as a number in the actor.
+Three functions are created to make the counter work: count(), getCount() and reset(). The current counter value is stored as a number in the actor. 
 
 
 ```javascript
 actor {
-    var counter : Nat = 0;
+    stable var counter : Nat = 0;
 }
 ```
 
