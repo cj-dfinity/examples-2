@@ -9,7 +9,7 @@ The purpuse of this example dapp is to build a simple counter dapp, where the co
 This example covers:
 
 - Create new canister smart contract using Motoko
-- Add backend functions for a counter (count, get count and reset count)
+- Add backend functions for a counter (increment, get count and reset count)
 - Deploy the canister smart contract locally
 - Test backend with Candid UI and command line using DFX 
 
@@ -36,11 +36,10 @@ $ cd motoko/persistant storage
 The two main parts of the example dapp is the backend and the Candid interface. This example project does not have a frontend.
 
 ### Motoko backend
-The backend functions are located in the `src/persistant_storage/main.mo` Motoko file. The backend stores the counter value, and has functions to get, increment and reset the counter value. Furthermore the backend insures the counter value persists upgrades of the dapp.
+The backend functions are located in the `src/persistant_storage/main.mo` Motoko file. The backend stores the counter value, and has functions to get, increment and reset the counter value. Furthermore the backend insures the counter value persists upgrades of the dapp. 
 
 #### Counter variable
-Three functions are created to make the counter work: count(), getCount() and reset(). The current counter value is stored as a number in the actor. 
-
+The current counter value is stored as a number in the actor. 
 
 ```javascript
 actor {
@@ -48,11 +47,11 @@ actor {
 }
 ```
 
-#### count()
-The `count()` function increments the counter variable. This function is envoked when the user is clicking the button on the frontend, or when the function is called through the Candid interface.
+#### increment()
+The `increment()` function increments the counter variable.
 
 ```javascript
-public func count() : async Nat {
+public func increment() : async Nat {
     counter += 1;
     return counter;
 };
@@ -60,11 +59,11 @@ public func count() : async Nat {
 
 The function is returning the incremented counter variable.
 
-#### getCount()
-The `getCount()` function returns the current counter value.
+#### get()
+The `get()` function returns the current counter value.
 
 ```javascript
-public query func getCount() : async Nat {
+public query func get() : async Nat {
     return counter;
 };
 ```
@@ -86,52 +85,6 @@ The localhost version of the `canister_ids.json` file can be found in `.dfx/loca
 
 **http://<candid_canister_id>.localhost:8000/?id=<backend_canister_id>**
 
-
-### Frontend
-The default project installed with `dfx new project_name` has an `index.html` file with page HTML and an `index.js` file with an implementation of the backend functions. These two files are modified in this example project to support the counter functionality, and the backend functions.
-
-#### HTML
-All HTML code is in the `src/minimal_dapp/_assets/index.html` file, and most of the HTML is carried over from the default project. The button is kept and so is the section showing the result, just simplified.
-
-```html
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <title>hack</title>
-        <base href="/">
-
-        <link type="text/css" rel="stylesheet" href="main.css" />
-    </head>
-    <body>
-        <img src="logo.png" alt="DFINITY logo" />
-        <section>
-            <button id="clickMeBtn">Click Me!</button>
-        </section>
-        <section id="counter"></section>
-    </body>
-</html>
-```
-
-#### Javascript
-Two eventlisteners are added to the JavaScript file, `src/minimal_dapp/_assets/index.js`, the existing JavaScript file from the default project. One eventlistener is for detecting button clicks, and it's calling the `count()` function in the backend, and an eventlistener for page load is added to get the initial value of the counter with `getCount()`. The backend functions are imported through the Candid interface.
-
-```javascript
-import { minimaldapp } from "../../declarations/minimal_dapp";
-
-document.addEventListener('DOMContentLoaded', async function () {
-  const counter = await minimaldapp.getCount();
-  document.getElementById("counter").innerText = "Counter: " + counter;
-})
-
-document.getElementById("clickMeBtn").addEventListener("click", async () => {
-  const counter = await minimaldapp.count();
-  document.getElementById("counter").innerText = "Counter: " + counter;
-});
-```
-
-
 ## Deployment
 The local network is started by running this command:
 
@@ -145,30 +98,21 @@ When the local network is up and running, run this command to deploy the caniste
 $ dfx deploy
 ```
 
-
 ## Testing
-The functionality of this example dapp can be tested both in the frontend and in the backend. Before the example dapp can be tested, it must be deployed (locally) like described in the above Deployment section. 
+There are two ways of testing the functionality of this example dapp. One way is by making command line requests using DFX, and the other way is to use the Candid UI. Before the example dapp can be tested, it must be deployed (locally) like described in the above Deployment section. 
 
-### Test the Frontend
-The URL for the frontend is depending on the canister ID, the local canister IDs can be found in `.dfx/local/canister_ids.json`. When deployed, the URL will look like this:
-
-**https://<ui_canister_id>.localhost:8000**
-
-### Test the backend
-There are two ways of testing the backend. One way is by making command line requests using DFX, and the other way is to use the Candid UI.
-
-#### DFX
-DFX has a subset of commands for canister operations, and one of them enables calling the public functions added to the `main.mo` file in the previous step. In the following examples the initial value is 0. `count` will increment value and return 1, `getCount` will return the current value and `reset` will set the value to 0.
+### DFX
+DFX has a subset of commands for canister operations, and one of them enables calling the public functions added to the `main.mo` file in the previous step. In the following examples the initial value is 0. `increment` will increment value and return 1, `get` will return the current value and `reset` will set the value to 0.
 
 Command usage: `dfx canister call &#60project&#62  &#60function&#62`
 
 ```bash
-$ dfx canister call minimal_dapp count
+$ dfx canister call minimal_dapp increment
 (1 : Nat)
 ```
 
 ```bash
-$ dfx canister call minimal_dapp getCount
+$ dfx canister call minimal_dapp get
 (1 : Nat)
 ```
 
@@ -177,8 +121,8 @@ $ dfx canister call minimal_dapp reset
 (0 : Nat)
 ```
 
-#### Candid UI
-The Candid UI provides an easy, user friendly interface for testing the backend. The UI is automatically generated, and the canister ID can be found in the `canister_ids.json` file. 
+### Candid UI
+The Candid UI provides an easy, user friendly interface for testing the dapp. The UI is automatically generated, and the canister ID can be found in the `canister_ids.json` file. 
 
 The localhost version of the `canister_ids.json` file can be found in `.dfx/local/canister_ids.json` and the URL is: 
 
