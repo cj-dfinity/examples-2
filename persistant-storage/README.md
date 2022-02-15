@@ -107,17 +107,17 @@ DFX has a subset of commands for canister operations, and one of them enables ca
 Command usage: `dfx canister call &#60project&#62  &#60function&#62`
 
 ```bash
-$ dfx canister call minimal_dapp increment
+$ dfx canister call persistant_storage increment
 (1 : Nat)
 ```
 
 ```bash
-$ dfx canister call minimal_dapp get
+$ dfx canister call persistant_storage get
 (1 : Nat)
 ```
 
 ```bash
-$ dfx canister call minimal_dapp reset
+$ dfx canister call persistant_storage reset
 (0 : Nat)
 ```
 
